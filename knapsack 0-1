@@ -1,0 +1,18 @@
+def knapsack(weight,value,sum,l):
+    #base condition
+    if sum is 0 or l is 0:
+        return 0
+    #if weighht greater than allowed
+    
+    if weight[l-1] > sum:
+        return knapsack(weight,value,sum,l-1)
+    
+    elif weight[l-1]<=sum:
+        return(max(value[l-1] + knapsack(weight,value,sum-weight[l-1],l-1),knapsack(weight,value,sum,l-1)))
+
+weight = [10,20,30]
+value = [60,100,120]
+
+sum = 50
+
+print(knapsack(weight,value,sum,len(weight)))
