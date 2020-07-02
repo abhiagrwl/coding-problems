@@ -1,0 +1,26 @@
+#Declaring a 2d matrix with maximum constraints
+t = [[-1]*1000]*1000
+
+def knapsack(weight,value,sum,l):
+    #base condition
+    if sum is 0 or l is 0:
+        return 0
+    #If we already have value in table return it.    
+    if t[sum][l]!= -1:
+        return t[sum][l]
+    
+    #if weighht greater than allowed
+    if weight[l-1] > sum:
+        t[sum][l] = knapsack(weight,value,sum,l-1)
+    
+    elif weight[l-1]<=sum:
+        t[sum][l] = (max(value[l-1] + knapsack(weight,value,sum-weight[l-1],l-1),knapsack(weight,value,sum,l-1)))
+
+    return t[sum][l]
+
+weight = [10,20,30]
+value = [60,100,120]
+
+sum = 50
+
+print(knapsack(weight,value,sum,len(weight)))
