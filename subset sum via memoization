@@ -1,0 +1,36 @@
+t = [[-1]*100]*8
+
+def subset(input,sum,n):
+    
+    print("input:",input)
+    print("sum:",sum)
+    print("n:",n)
+    
+    if sum is 0:
+        t[n][sum] = True
+        print("1st condition")
+    
+    if n is 0 and sum!=0:
+        t[n][sum] = False
+        print("2nd condition")
+    
+    if t[n][sum] != -1:
+        print("3st condition")
+        return t[n][sum]
+        
+    if input[n-1] > sum:
+        print("4st condition")
+        t[n][sum] = subset(input,sum,n-1)
+
+    else:
+        print("5st condition")
+        t[n][sum]  =  (  subset(input,sum-input[n-1],n-1) or subset(input,sum,n-1) )
+        
+    print("t n sum is",t[n][sum])
+    return t[n][sum]
+
+input= [3, 34, 4, 12, 5, 2]
+sum = 13
+
+x= subset(input,sum,len(input))
+print(x)
