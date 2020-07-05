@@ -1,0 +1,32 @@
+def subset(input,sum,n):
+
+    t = [[-1]*(sum+1)]*(n+1)
+    
+    for i in range(sum+1):
+        t[0][i] = False
+        
+    for i in range(n+1):
+        t[i][0] = True
+        
+    for i in range(n+1):
+        for j in range(sum+1):
+    
+            if input[i-1] > j:
+                return t[i-1][j]
+    
+            else:
+                return (t[i-1][j]) or t[i-1][j-input[i-1]] 
+        
+def check_subset_equal(arr,n):
+    sum_elem = sum(arr)
+    if sum_elem%2 != 0 :
+        return False
+    
+    else:
+        return subset(arr,int(sum_elem/2),n)
+
+
+##Given array
+arr = [1,6,5,12]
+res = check_subset_equal(arr,len(arr))
+print(res)
