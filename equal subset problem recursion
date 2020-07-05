@@ -1,0 +1,28 @@
+def subset(input,sum,n):
+
+
+    if sum is 0:
+        return True
+    
+    if n is 0:
+        return False
+    
+    if input[n-1] > sum:
+        return subset(input,sum,n-1)
+    
+    else:
+        return ( subset(input,sum,n-1) or subset(input,sum-input[n-1],n-1) )
+        
+def check_subset_equal(arr,n):
+    sum_elem = sum(arr)
+    if sum_elem%2 != 0 :
+        return False
+    
+    else:
+        return subset(arr,int(sum_elem/2),n)
+
+
+##Given array
+arr = [1,5,5,12]
+res = check_subset_equal(arr,len(arr))
+print(res)
