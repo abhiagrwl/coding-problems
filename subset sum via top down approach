@@ -2,6 +2,8 @@ def subset(input,sum,n):
     
     t = [[-1]*(sum+1)]*(n+1)
 
+    t =([[False for i in range(sum + 1)]  
+            for i in range(n + 1)]) 
 
     for i in range(n + 1): 
         t[i][0] = True
